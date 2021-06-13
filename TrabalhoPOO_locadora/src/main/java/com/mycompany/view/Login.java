@@ -158,7 +158,7 @@ public class Login extends javax.swing.JFrame {
             for (Funcionario fun : funcionarios) {
                 if (fun.getEmail().equals(txtEmail.getText()) && fun.getSenha().equals(txtSenha.getText())) {
                     JOptionPane.showMessageDialog(null, "ENTROU NO LOGIN");
-                    // new MenuFuncionario().setVisible(true);// CRIAR A TELA FUNCIONARIO
+                    new MenuFuncionario(fun).setVisible(true);// CRIAR A TELA FUNCIONARIO
                     this.dispose();
                     break;
                 }

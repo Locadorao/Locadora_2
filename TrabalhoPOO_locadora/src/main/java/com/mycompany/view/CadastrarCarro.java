@@ -193,7 +193,8 @@ public class CadastrarCarro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+        new MenuFuncionario().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

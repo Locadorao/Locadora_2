@@ -5,17 +5,26 @@
  */
 package com.mycompany.view;
 
+import com.mycompany.model.Funcionario;
+
 /**
  *
  * @author Gabriel
  */
 public class MenuFuncionario extends javax.swing.JFrame {
 
+    private Funcionario fun;
+
     /**
      * Creates new form MenuCliente2
      */
     public MenuFuncionario() {
         initComponents();
+    }
+
+    public MenuFuncionario(Funcionario log) {
+        initComponents();
+        fun = log;
     }
 
     /**
@@ -135,20 +144,21 @@ public class MenuFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnCadastrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCarroActionPerformed
- 
+        new CadastrarCarro().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCadastrarCarroActionPerformed
 
     private void btnVerCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCarrosActionPerformed
-   
+     
     }//GEN-LAST:event_btnVerCarrosActionPerformed
 
     private void btnEditarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroActionPerformed
-       new AlugarCarro().setVisible(true);
+        new EditarCarro().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditarCarroActionPerformed
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-       new EditarPerfil().setVisible(true);
+        new EditarPerfilFuncionario(fun).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 

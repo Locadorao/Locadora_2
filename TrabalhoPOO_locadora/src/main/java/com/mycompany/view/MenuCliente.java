@@ -6,11 +6,9 @@
 package com.mycompany.view;
 
 import com.mycompany.model.Cliente;
-import com.mycompany.model.Funcionario;
 
 public class MenuCliente extends javax.swing.JFrame {
 
-    private Funcionario fun;
     private Cliente cli;
 
     /**
@@ -18,11 +16,6 @@ public class MenuCliente extends javax.swing.JFrame {
      */
     public MenuCliente() {
         initComponents();
-    }
-
-    public MenuCliente(Funcionario log) {
-        initComponents();
-        fun = log;
     }
 
     public MenuCliente(Cliente log) {

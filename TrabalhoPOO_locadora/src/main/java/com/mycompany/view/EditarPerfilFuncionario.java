@@ -33,7 +33,6 @@ public class EditarPerfilFuncionario extends javax.swing.JFrame {
         txtEmail.setText(fun.getEmail());
         txtSenha.setText(fun.getSenha());
         funcionarioDAO = new GenericDAO<>();
-
     }
 
     /**
@@ -216,7 +215,7 @@ public class EditarPerfilFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarEdicaoActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        new MenuCliente(fun).setVisible(true);
+        new MenuFuncionario(fun).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
