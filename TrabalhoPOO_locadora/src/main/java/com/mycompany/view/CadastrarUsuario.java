@@ -5,19 +5,29 @@
  */
 package com.mycompany.view;
 
+import com.mycompany.dao.GenericDAO;
 import com.mycompany.model.Cliente;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Gabriel
- */
 public class CadastrarUsuario extends javax.swing.JFrame {
 
+    private final GenericDAO<Cliente> clienteDAO;
+    private Cliente cli;
+
     /**
-     * Creates new form CadastrarUsuario2
+     * Creates new form CadastrarUsuario
      */
     public CadastrarUsuario() {
         initComponents();
+        clienteDAO = new GenericDAO<>();
+        cli = new Cliente();
+        cli.setEnderecoid(null);
+    }
+
+    public CadastrarUsuario(Cliente log) {
+        initComponents();
+        clienteDAO = new GenericDAO<>();
+        cli = log;
     }
 
     /**
@@ -41,6 +51,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jLabel_telefone = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        jButtonEndereco = new javax.swing.JButton();
+        jLabel_Endereco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +125,16 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jButtonEndereco.setText("Colocar Endereço");
+        jButtonEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnderecoActionPerformed(evt);
+            }
+        });
+
+        jLabel_Endereco.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        jLabel_Endereco.setText("Endereço");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,22 +142,29 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_telefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_senha, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_email, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(16, 16, 16)
+                            .addComponent(jLabel_email, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_telefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Endereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jButtonEndereco)))))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -158,14 +187,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel_senha)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel_telefone)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_telefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Endereco))
                 .addGap(25, 25, 25)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11))
+                .addContainerGap())
         );
 
         pack();
@@ -178,12 +211,38 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Cliente cli = new Cliente();
-        cli.setNome(txtNome.getText());
-        cli.setEmail(txtEmail.getText());
-        cli.setSenha(txtSenha.getText());
-        cli.setTelefone(txtTelefone.getText());
-       // System.out.printf("%s - nome\n%s - email\n%s - senha\n%s - telefone\n", cli.getNome(), cli.getEmail(), cli.getSenha(), cli.getTelefone());
+        if (!txtNome.getText().isEmpty()) {
+            cli.setNome(txtNome.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "O NOME É OBRIGATÓRIO", "CADASTRAR CLIENTE", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtEmail.getText().isEmpty()) {
+            cli.setEmail(txtEmail.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "O EMAIL É OBRIGATÓRIO", "CADASTRAR CLIENTE", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtSenha.getText().isEmpty()) {
+            cli.setSenha(txtSenha.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "A SENHA É OBRIGATÓRIO", "CADASTRAR CLIENTE", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtTelefone.getText().isEmpty()) {
+            cli.setTelefone(txtTelefone.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "O TELEFONE É OBRIGATÓRIO", "CADASTRAR CLIENTE", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (cli.getEnderecoid() == null) {
+            JOptionPane.showMessageDialog(null, "POR FAVOR INFORME O ENDEREÇO OS CAMPOS", "CADASTRAR CLIENTE", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            System.out.println("ENTROU AQUI");
+            clienteDAO.saveOrUpdate(cli);
+        }
+        // System.out.printf("%s - nome\n%s - email\n%s - senha\n%s - telefone\n", cli.getNome(), cli.getEmail(), cli.getSenha(), cli.getTelefone());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
@@ -201,6 +260,16 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void jButtonEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnderecoActionPerformed
+        Cliente cli = new Cliente();
+        cli.setNome(txtNome.getText());
+        cli.setEmail(txtEmail.getText());
+        cli.setSenha(txtSenha.getText());
+        cli.setTelefone(txtTelefone.getText());
+        new CadastrarEndereco(cli).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEnderecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +310,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton jButtonEndereco;
+    private javax.swing.JLabel jLabel_Endereco;
     private javax.swing.JLabel jLabel_cadastrarUsuario;
     private javax.swing.JLabel jLabel_email;
     private javax.swing.JLabel jLabel_locadora;

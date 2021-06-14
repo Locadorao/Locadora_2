@@ -162,7 +162,7 @@ public class Carro implements Serializable, EntidadeBase {
 
     @Override
     public String toString() {
-        return "com.mycompany.model.Carro[ id=" + id + " ]";
+        return "MODELO: " + modelo + "\n" + "COR: " + cor + "\n" + "ANO: " + ano + "\n" + "VALOR ALUGUEL: " + valor + "\n" + "DESCRIÇÂO: " + descricao;
     }
 
     public Alugar encontrarAlugarPeloCarro(GenericDAO alugarDAO) {

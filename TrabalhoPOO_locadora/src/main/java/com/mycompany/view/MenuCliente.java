@@ -156,14 +156,29 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnEntregarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntregarCarroActionPerformed
-
+        alug = cli.encontrarAlugarPeloCliente(alugarDAO);
+        if (alug != null) {
+            int opcao;
+            opcao = JOptionPane.showConfirmDialog(null, alug.getCarroid().toString() + "\nGOSTARIA DE DEVOLVER O CARRO?", "CARRO ALUGADO", JOptionPane.YES_NO_OPTION);
+            if (opcao == 0) {
+                try {
+                    alugarDAO.remove(Alugar.class, alug.getId());
+                } catch (Exception e) {
+                    System.out.println("ERRO QUANDO REMOVE");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "NÃO EXISTE UM CARRO ALUGADO PARA DEVOLVER", "CARRO ALUGADO", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEntregarCarroActionPerformed
 
+    //FALTA ESSE <-----------------
     private void btnVerCarroAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCarroAlugadoActionPerformed
-        alug = new Alugar();
         alug = cli.encontrarAlugarPeloCliente(alugarDAO);
-        JOptionPane.showMessageDialog(null, alug.getCarroid());
-
+        if (alug != null)
+            JOptionPane.showMessageDialog(null, alug.getCarroid().toString(), "CARRO ALUGADO", JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, "NÃO EXISTE UM CARRO ALUGADO", "CARRO ALUGADO", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnVerCarroAlugadoActionPerformed
 
     private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
@@ -193,13 +208,17 @@ public class MenuCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
