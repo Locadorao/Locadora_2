@@ -5,18 +5,33 @@
  */
 package com.mycompany.view;
 
-/**
- *
- * @author Gabriel
- */
+import com.mycompany.dao.GenericDAO;
+import com.mycompany.model.Carro;
+import javax.swing.JOptionPane;
+
 public class EditarCarro extends javax.swing.JFrame {
 
-    
+    private final GenericDAO<Carro> carroDAO;
+    private Carro car;
+    private Carro edit = new Carro();
+
     /**
-     * Creates new form CadastrarUsuario2
+     * Creates new form CadastrarUsuario
      */
     public EditarCarro() {
         initComponents();
+        carroDAO = new GenericDAO<>();
+    }
+
+    public EditarCarro(Carro edit) {
+        initComponents();
+        //car = carroDAO.findById(Carro.class, WIDTH);// COLOCAR O CARRO PARA EDITAR  
+        txtModelo.setText(car.getModelo());
+        txtAno.setText(car.getAno());
+        jComboBoxCor.setSelectedItem(car.getCor());
+        txtValor.setText(String.valueOf(car.getValor()));
+        txtDescricao.setText(car.getDescricao());
+        carroDAO = new GenericDAO<>();
     }
 
     /**
@@ -41,7 +56,7 @@ public class EditarCarro extends javax.swing.JFrame {
         jLabel_descricao = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxCor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,10 +133,10 @@ public class EditarCarro extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a Cor", "Branco", "Preto", "Cinza", "Vermelho" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a Cor", "Branco", "Preto", "Cinza", "Vermelho", "Azul" }));
+        jComboBoxCor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxCorActionPerformed(evt);
             }
         });
 
@@ -149,7 +164,7 @@ public class EditarCarro extends javax.swing.JFrame {
                             .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxCor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,7 +185,7 @@ public class EditarCarro extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_cor)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,7 +214,39 @@ public class EditarCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        if (txtModelo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O MODELO NÃO PODE SER NULO\nTente novamente...");
+            return;
+        }
+        if (txtAno.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O ANO NÃO PODE SER NULO\nTente novamente...");
+            return;
+        }
+        if (jComboBoxCor.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "A COR NÃO PODE SER NULO\nTente novamente...");
+            return;
+        }
+        if (txtValor.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O VALOR DO ALUGUEL NÃO PODE SER NULO\nTente novamente...");
+            return;
+        }
+        if (txtDescricao.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "A DESCRICAO DO ALUGUEL NÃO PODE SER NULO\nTente novamente...");
+            return;
+        }
+        car.setModelo(txtModelo.getText());
+        car.setAno(txtAno.getText());
+        car.setCor(String.valueOf(jComboBoxCor.getSelectedItem()));
+        car.setValor(Float.valueOf(txtValor.getText()));
+        try {
+            carroDAO.saveOrUpdate(car);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "A EDIÇÃO NÃO FOI FEITA COM SUCESSO");
+            btnVoltarActionPerformed(null);
+        } finally {
+            JOptionPane.showMessageDialog(null, "A EDIÇÃO FOI FEITA COM SUCESSO");
+            btnVoltarActionPerformed(null);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
@@ -218,9 +265,9 @@ public class EditarCarro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxCorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,7 +314,7 @@ public class EditarCarro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxCor;
     private javax.swing.JLabel jLabel_ano;
     private javax.swing.JLabel jLabel_cor;
     private javax.swing.JLabel jLabel_descricao;
