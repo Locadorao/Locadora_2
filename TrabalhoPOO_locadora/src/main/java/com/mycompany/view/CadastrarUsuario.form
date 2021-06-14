@@ -29,9 +29,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="2" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel_telefone" min="-2" pref="64" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="txtTelefone" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="txtSenha" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="txtEmail" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="txtNome" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
@@ -39,8 +37,9 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel_telefone" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel_Estado" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel_cidade" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel_rua" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -48,20 +47,28 @@
                           <Component id="jLabel_email" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel_nome" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="btnSalvar" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnVoltar" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="btnSalvar" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnVoltar" min="-2" pref="75" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="2" attributes="0">
+                                      <Component id="txtRua" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxEstado" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <Component id="jLabel_Endereco" alignment="2" min="-2" pref="109" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtCidade" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="txtRua" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Component id="jComboBoxEstado" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Component id="jLabel_Endereco" alignment="2" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="txtTelefone" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtCidade" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>

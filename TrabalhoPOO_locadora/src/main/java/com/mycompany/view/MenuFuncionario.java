@@ -42,7 +42,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
 
         jLabel_menu.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
         jLabel_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/page.png"))); // NOI18N
-        jLabel_menu.setText("Menu do usuário");
+        jLabel_menu.setText("Menu do funcionário");
 
         btnCadastrarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
         btnCadastrarCarro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/car_add.png"))); // NOI18N
