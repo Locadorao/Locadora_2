@@ -27,7 +27,6 @@
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="btnVoltar" alignment="2" min="-2" pref="75" max="-2" attributes="0"/>
-                  <Component id="btnVerCarros" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnEditarCarro" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnEditarPerfil" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnCadastrarCarro" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
@@ -51,15 +50,13 @@
                       <Component id="jLabel_menu" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
               <Component id="btnCadastrarCarro" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnEditarPerfil" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnEditarCarro" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnVerCarros" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Component id="btnVoltar" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -110,7 +107,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="JetBrains Mono" size="10" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Editar Carro"/>
+        <Property name="text" type="java.lang.String" value="Editar Carros"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[135, 23]"/>
         </Property>
@@ -120,18 +117,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarCarroActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnVerCarros">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="JetBrains Mono" size="10" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ver Carros"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerCarrosActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">

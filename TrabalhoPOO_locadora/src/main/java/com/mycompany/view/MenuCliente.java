@@ -172,7 +172,7 @@ public class MenuCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntregarCarroActionPerformed
 
-    
+
     private void btnVerCarroAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCarroAlugadoActionPerformed
         alug = cli.encontrarAlugarPeloCliente(alugarDAO);
         if (alug != null)
@@ -182,8 +182,12 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerCarroAlugadoActionPerformed
 
     private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
-        new AlugarCarro(cli).setVisible(true);
-        this.dispose();
+        if (cli.encontrarAlugarPeloCliente(alugarDAO) != null) {
+            JOptionPane.showMessageDialog(null, "USUÁRIO NÃO PODE ALUGAR MAIS DE UM CARRO\nTente novamente...", "CARRO ALUGADO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            new AlugarCarro(cli).setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnAlugarCarroActionPerformed
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed

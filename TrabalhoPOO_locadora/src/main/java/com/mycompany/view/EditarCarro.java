@@ -13,7 +13,6 @@ public class EditarCarro extends javax.swing.JFrame {
 
     private final GenericDAO<Carro> carroDAO;
     private Carro car;
-    private Carro edit = new Carro();
 
     /**
      * Creates new form CadastrarUsuario
@@ -21,11 +20,12 @@ public class EditarCarro extends javax.swing.JFrame {
     public EditarCarro() {
         initComponents();
         carroDAO = new GenericDAO<>();
+        car = new Carro();
     }
 
     public EditarCarro(Carro edit) {
         initComponents();
-        //car = carroDAO.findById(Carro.class, WIDTH);// COLOCAR O CARRO PARA EDITAR  
+        car = edit;
         txtModelo.setText(car.getModelo());
         txtAno.setText(car.getAno());
         jComboBoxCor.setSelectedItem(car.getCor());

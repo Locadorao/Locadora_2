@@ -159,21 +159,19 @@ public class Login extends javax.swing.JFrame {
                 if (fun.getEmail().equals(txtEmail.getText()) && fun.getSenha().equals(txtSenha.getText())) {
                     new MenuFuncionario(fun).setVisible(true);// CRIAR A TELA FUNCIONARIO
                     this.dispose();
-                    break;
+                    return;
                 }
             }
             if (this.isActive()) {
-                for (Cliente cl : clientes) {
-                    if (cl.getEmail().equals(txtEmail.getText()) && cl.getSenha().equals(txtSenha.getText())) {
-                        new MenuCliente(cl).setVisible(true);
+                for (Cliente cli : clientes) {
+                    if (cli.getEmail().equals(txtEmail.getText()) && cli.getSenha().equals(txtSenha.getText())) {
+                        new MenuCliente(cli).setVisible(true);
                         this.dispose();
-                        break;
+                        return;
                     }
                 }
             }
-            if (this.isActive()) {
-                JOptionPane.showMessageDialog(null, "LOGIN NÃO ENCONTRADO\nTENTE NOVAMENTE...");
-            }
+            JOptionPane.showMessageDialog(null, "LOGIN NÃO ENCONTRADO\nTENTE NOVAMENTE...");
         }
     }//GEN-LAST:event_btnLogarActionPerformed
 

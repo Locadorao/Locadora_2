@@ -5,17 +5,20 @@
  */
 package com.mycompany.view;
 
-/**
- *
- * @author Gabriel
- */
+import com.mycompany.dao.GenericDAO;
+import com.mycompany.model.Carro;
+import javax.swing.JOptionPane;
+
 public class CadastrarCarro extends javax.swing.JFrame {
 
+    private final GenericDAO<Carro> carroDAO;
+
     /**
-     * Creates new form CadastrarUsuario2
+     * Creates new form CadastrarUsuario
      */
     public CadastrarCarro() {
         initComponents();
+        carroDAO = new GenericDAO<>();
     }
 
     /**
@@ -196,7 +199,41 @@ public class CadastrarCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       
+        Carro car = new Carro();
+        if (!txtModelo.getText().isEmpty()) {
+            car.setModelo(txtModelo.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "O MODELO É OBRIGATÓRIO", "CADASTRAR CARRO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtAno.getText().isEmpty()) {
+            car.setAno(txtAno.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "O ANO É OBRIGATÓRIO", "CADASTRAR CARRO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (jComboBoxCor.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "A COR É OBRIGATÓRIO", "CADASTRAR CARRO", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            car.setCor(String.valueOf(jComboBoxCor.getSelectedItem()));
+        }
+        if (!txtValor.getText().isEmpty()) {
+            car.setValor(Float.valueOf(txtValor.getText()));
+        } else {
+            JOptionPane.showMessageDialog(null, "O VALOR É OBRIGATÓRIO", "CADASTRAR CARRO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtDescricao.getText().isEmpty()) {
+            car.setDescricao(txtDescricao.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "A DESCRIÇÃO É OBRIGATÓRIO", "CADASTRAR CARRO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        car.setDisponibilidade(Short.valueOf("1"));
+        carroDAO.saveOrUpdate(car);
+        JOptionPane.showMessageDialog(null, "CARRO CADASTRADO COM SUCESSO!!!", "CADASTRAR CARRO", JOptionPane.INFORMATION_MESSAGE);
+        btnVoltarActionPerformed(null);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed

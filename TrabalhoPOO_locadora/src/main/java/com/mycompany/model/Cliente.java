@@ -157,7 +157,6 @@ public class Cliente implements Serializable, EntidadeBase {
      public Alugar encontrarAlugarPeloCliente(GenericDAO alugarDAO) {
         List<Alugar> alugs;
         alugs = alugarDAO.list(Alugar.class);
-
         for (Alugar alg : alugs) {
             if (alg.getClienteid().getId().equals(this.getId())) {
                 return alg;

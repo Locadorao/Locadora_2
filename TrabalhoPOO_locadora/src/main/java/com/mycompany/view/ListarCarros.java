@@ -6,46 +6,28 @@
 package com.mycompany.view;
 
 import com.mycompany.dao.GenericDAO;
-import com.mycompany.model.Alugar;
 import com.mycompany.model.Carro;
-import com.mycompany.model.Cliente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-public class AlugarCarro extends javax.swing.JFrame {
+public class ListarCarros extends javax.swing.JFrame {
 
     private final GenericDAO<Carro> carroDAO;
-    private final GenericDAO<Alugar> alugarDAO;
-    private Cliente cli;
     private List<Carro> carros;
     DefaultTableModel model = new DefaultTableModel();
 
     /**
      * Creates new form AlugarCarro
      */
-    public AlugarCarro() {
+    public ListarCarros() {
         initComponents();
         carroDAO = new GenericDAO<>();
-        alugarDAO = new GenericDAO<>();
         model.addColumn("modelo");
         model.addColumn("ano");
         model.addColumn("cor");
         model.addColumn("valor");
         model.addColumn("descricao");
-        carros = carroDAO.list(Carro.class);//colocando os carros dentro da lista
-    }
-
-    public AlugarCarro(Cliente log) {
-        initComponents();
-        carroDAO = new GenericDAO<>();
-        alugarDAO = new GenericDAO<>();
-        model.addColumn("modelo");
-        model.addColumn("ano");
-        model.addColumn("cor");
-        model.addColumn("valor");
-        model.addColumn("descricao");
-        cli = log;
         carros = carroDAO.list(Carro.class);//colocando os carros dentro da lista
     }
 
@@ -63,7 +45,7 @@ public class AlugarCarro extends javax.swing.JFrame {
         jScrollPane_alugarCarro = new javax.swing.JScrollPane();
         jTable_alugarCarro = new javax.swing.JTable();
         btnAtualizarListaCarros = new javax.swing.JButton();
-        btnAlugarCarro = new javax.swing.JButton();
+        btnEditarCarro = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,13 +80,13 @@ public class AlugarCarro extends javax.swing.JFrame {
             }
         });
 
-        btnAlugarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
-        btnAlugarCarro.setText("Alugar Carro");
-        btnAlugarCarro.setAlignmentY(0.0F);
-        btnAlugarCarro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAlugarCarro.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
+        btnEditarCarro.setText("Editar Carro");
+        btnEditarCarro.setAlignmentY(0.0F);
+        btnEditarCarro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEditarCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlugarCarroActionPerformed(evt);
+                btnEditarCarroActionPerformed(evt);
             }
         });
 
@@ -125,7 +107,7 @@ public class AlugarCarro extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane_alugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_alugarCarro)
                     .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,7 +129,7 @@ public class AlugarCarro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtualizarListaCarros)
                 .addGap(1, 1, 1)
-                .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -157,28 +139,25 @@ public class AlugarCarro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        new MenuCliente(cli).setVisible(true);
+        new MenuCliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
+    private void btnEditarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroActionPerformed
+        Carro car = new Carro();
         int index = jTable_alugarCarro.getSelectedRow();
         if (index == -1) {
-            JOptionPane.showMessageDialog(null, "NÃO FOI SELECIONADO UM CARRO\nTente novamente...", "CARRO ALUGADO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "NÃO FOI SELECIONADO UM CARRO\nTente novamente...", "CARRO EDITADO", JOptionPane.WARNING_MESSAGE);
+
         } else {
-            Carro car = new Carro();
             car = carros.get(index);
-            String dias = JOptionPane.showInputDialog(null, "POR QUAL PERÍODO GOSTARIA DE ALUGAR? (EM DIAS)", "CARRO ALUGADO", JOptionPane.INFORMATION_MESSAGE);
-            Alugar alug = new Alugar();
-            alug.setTempoAlugado(Integer.valueOf(dias));
-            car.setDisponibilidade(Short.valueOf("0"));
-            alug.setCarroid(car);
-            alug.setClienteid(cli);
-            alugarDAO.saveOrUpdate(alug);
-            JOptionPane.showMessageDialog(null, "ALUGADO COM SUCESSO!!!", "CARRO ALUGADO", JOptionPane.INFORMATION_MESSAGE);
-            btnVoltarActionPerformed(null);
+            int i = JOptionPane.showConfirmDialog(null, "GOSTARIA DE EDITAR ESSE CARRO?", "CARRO EDITADO", JOptionPane.INFORMATION_MESSAGE);
+            if (i == 0) {
+                new EditarCarro(car).setVisible(true);
+                this.dispose();
+            }
         }
-    }//GEN-LAST:event_btnAlugarCarroActionPerformed
+    }//GEN-LAST:event_btnEditarCarroActionPerformed
 
     private void btnAtualizarListaCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarListaCarrosActionPerformed
         atualizarListaCarro();
@@ -190,9 +169,7 @@ public class AlugarCarro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Lista vazia");
         } else {
             for (Carro car : carros) {
-                if (car.getDisponibilidade() == 1) { // carros disponíveis
-                    model.addRow(new Object[]{car.getModelo(), car.getAno(), car.getCor(), car.getValor(), car.getDescricao()});
-                }
+                model.addRow(new Object[]{car.getModelo(), car.getAno(), car.getCor(), car.getValor(), car.getDescricao()});
             }
             jTable_alugarCarro.setModel(model);
         }
@@ -215,28 +192,30 @@ public class AlugarCarro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlugarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCarros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlugarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCarros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlugarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCarros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlugarCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCarros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlugarCarro().setVisible(true);
+                new ListarCarros().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlugarCarro;
     private javax.swing.JButton btnAtualizarListaCarros;
+    private javax.swing.JButton btnEditarCarro;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel_alugarCarro;
     private javax.swing.JLabel jLabel_locadora;
