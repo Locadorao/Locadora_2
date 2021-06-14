@@ -172,7 +172,7 @@ public class MenuCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntregarCarroActionPerformed
 
-    //FALTA ESSE <-----------------
+    
     private void btnVerCarroAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCarroAlugadoActionPerformed
         alug = cli.encontrarAlugarPeloCliente(alugarDAO);
         if (alug != null)

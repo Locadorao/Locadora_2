@@ -6,6 +6,7 @@
 package com.mycompany.view;
 
 import com.mycompany.dao.GenericDAO;
+import com.mycompany.model.Alugar;
 import com.mycompany.model.Carro;
 import com.mycompany.model.Cliente;
 import javax.swing.JOptionPane;
@@ -14,8 +15,10 @@ import java.util.List;
 
 public class AlugarCarro extends javax.swing.JFrame {
 
-    private Cliente cli;
     private final GenericDAO<Carro> carroDAO;
+    private final GenericDAO<Alugar> alugarDAO;
+    private Cliente cli;
+    private List<Carro> carros;
     DefaultTableModel model = new DefaultTableModel();
 
     /**
@@ -24,23 +27,26 @@ public class AlugarCarro extends javax.swing.JFrame {
     public AlugarCarro() {
         initComponents();
         carroDAO = new GenericDAO<>();
+        alugarDAO = new GenericDAO<>();
         model.addColumn("modelo");
         model.addColumn("ano");
         model.addColumn("cor");
         model.addColumn("valor");
         model.addColumn("descricao");
-
+        carros = carroDAO.list(Carro.class);//colocando os carros dentro da lista
     }
-    
-      public AlugarCarro(Cliente log) {
+
+    public AlugarCarro(Cliente log) {
         initComponents();
         carroDAO = new GenericDAO<>();
+        alugarDAO = new GenericDAO<>();
         model.addColumn("modelo");
         model.addColumn("ano");
         model.addColumn("cor");
         model.addColumn("valor");
         model.addColumn("descricao");
         cli = log;
+        carros = carroDAO.list(Carro.class);//colocando os carros dentro da lista
     }
 
     /**
@@ -151,12 +157,22 @@ public class AlugarCarro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        new MenuCliente().setVisible(true);
+        new MenuCliente(cli).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
-
+        Carro car = new Carro();
+        int index = jTable_alugarCarro.getSelectedRow();
+        car = carros.get(index);
+        String dias = JOptionPane.showInputDialog(null, "POR QUAL PERÍODO GOSTARIA DE ALUGAR? (EM DIAS)", "CARRO ALUGADO", JOptionPane.INFORMATION_MESSAGE);
+        Alugar alug = new Alugar();
+        alug.setTempoAlugado(Integer.valueOf(dias));
+        alug.setCarroid(car);
+        alug.setClienteid(cli);
+        alugarDAO.saveOrUpdate(alug);
+        JOptionPane.showMessageDialog(null, "ALUGADO COM SUCESSO!!!", "CARRO ALUGADO", JOptionPane.INFORMATION_MESSAGE);
+        btnVoltarActionPerformed(null);
     }//GEN-LAST:event_btnAlugarCarroActionPerformed
 
     private void btnAtualizarListaCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarListaCarrosActionPerformed
@@ -165,8 +181,6 @@ public class AlugarCarro extends javax.swing.JFrame {
 
     public void atualizarListaCarro() {
         //model.getDataVector().removeAllElements();
-        List<Carro> carros;//criando uma lista de carros
-        carros = carroDAO.list(Carro.class);
         if (carros.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Lista vazia");
         } else {

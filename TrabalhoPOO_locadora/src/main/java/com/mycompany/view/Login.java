@@ -157,7 +157,6 @@ public class Login extends javax.swing.JFrame {
             funcionarios = funcionarioDAO.list(Funcionario.class);
             for (Funcionario fun : funcionarios) {
                 if (fun.getEmail().equals(txtEmail.getText()) && fun.getSenha().equals(txtSenha.getText())) {
-                    JOptionPane.showMessageDialog(null, "ENTROU NO LOGIN");
                     new MenuFuncionario(fun).setVisible(true);// CRIAR A TELA FUNCIONARIO
                     this.dispose();
                     break;
@@ -166,7 +165,6 @@ public class Login extends javax.swing.JFrame {
             if (this.isActive()) {
                 for (Cliente cl : clientes) {
                     if (cl.getEmail().equals(txtEmail.getText()) && cl.getSenha().equals(txtSenha.getText())) {
-                        JOptionPane.showMessageDialog(null, "ENTROU NO LOGIN");
                         new MenuCliente(cl).setVisible(true);
                         this.dispose();
                         break;
