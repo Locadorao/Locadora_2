@@ -34,7 +34,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel_locadora = new javax.swing.JLabel();
         jLabel_login = new javax.swing.JLabel();
         jLabel_Email = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -44,14 +43,14 @@ public class Login extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Locadora Pão Duro");
         setMinimumSize(new java.awt.Dimension(370, 420));
         setName(""); // NOI18N
+        setResizable(false);
         setSize(new java.awt.Dimension(370, 450));
 
-        jLabel_locadora.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
-        jLabel_locadora.setText("Locadora Pão Duro");
-
-        jLabel_login.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        jLabel_login.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
+        jLabel_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/email_open.png"))); // NOI18N
         jLabel_login.setText("Login");
         jLabel_login.setAlignmentY(0.0F);
 
@@ -113,16 +112,13 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel_senha)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_Email)
-                    .addComponent(jLabel_login)
-                    .addComponent(jLabel_locadora))
+                    .addComponent(jLabel_login))
                 .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel_login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +228,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLogar;
     private javax.swing.JLabel jLabel_Email;
-    private javax.swing.JLabel jLabel_locadora;
     private javax.swing.JLabel jLabel_login;
     private javax.swing.JLabel jLabel_senha;
     private javax.swing.JTextField txtEmail;

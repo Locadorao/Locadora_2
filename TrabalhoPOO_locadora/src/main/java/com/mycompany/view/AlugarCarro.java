@@ -52,7 +52,6 @@ public class AlugarCarro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel_locadora = new javax.swing.JLabel();
         jLabel_alugarCarro = new javax.swing.JLabel();
         jScrollPane_alugarCarro = new javax.swing.JScrollPane();
         jTable_alugarCarro = new javax.swing.JTable();
@@ -61,11 +60,11 @@ public class AlugarCarro extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Locadora Pão Duro");
+        setResizable(false);
 
-        jLabel_locadora.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
-        jLabel_locadora.setText("Locadora Pão Duro");
-
-        jLabel_alugarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        jLabel_alugarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
+        jLabel_alugarCarro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/car.png"))); // NOI18N
         jLabel_alugarCarro.setText("Alugar Carro");
 
         jScrollPane_alugarCarro.setBackground(new java.awt.Color(204, 204, 204));
@@ -73,6 +72,8 @@ public class AlugarCarro extends javax.swing.JFrame {
         jTable_alugarCarro.setFont(new java.awt.Font("Fira Code Retina", 0, 10)); // NOI18N
         jTable_alugarCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -92,10 +93,10 @@ public class AlugarCarro extends javax.swing.JFrame {
             }
         });
 
-        btnAlugarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
         btnAlugarCarro.setText("Alugar Carro");
-        btnAlugarCarro.setAlignmentY(0.0F);
         btnAlugarCarro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAlugarCarro.setMaximumSize(new java.awt.Dimension(107, 32));
+        btnAlugarCarro.setMinimumSize(new java.awt.Dimension(107, 32));
         btnAlugarCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlugarCarroActionPerformed(evt);
@@ -115,34 +116,35 @@ public class AlugarCarro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane_alugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_alugarCarro)
-                    .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane_alugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAtualizarListaCarros)
-                .addGap(25, 25, 25))
+                .addComponent(jLabel_alugarCarro)
+                .addGap(158, 158, 158))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAtualizarListaCarros)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel_alugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane_alugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtualizarListaCarros)
-                .addGap(1, 1, 1)
-                .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAlugarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualizarListaCarros, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -156,7 +158,7 @@ public class AlugarCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
-
+        
     }//GEN-LAST:event_btnAlugarCarroActionPerformed
 
     private void btnAtualizarListaCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarListaCarrosActionPerformed
@@ -220,7 +222,6 @@ public class AlugarCarro extends javax.swing.JFrame {
     private javax.swing.JButton btnAtualizarListaCarros;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel_alugarCarro;
-    private javax.swing.JLabel jLabel_locadora;
     private javax.swing.JScrollPane jScrollPane_alugarCarro;
     private javax.swing.JTable jTable_alugarCarro;
     // End of variables declaration//GEN-END:variables

@@ -36,7 +36,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel_locadora = new javax.swing.JLabel();
         jLabel_menu = new javax.swing.JLabel();
         btnCadastrarCarro = new javax.swing.JButton();
         btnEditarPerfil = new javax.swing.JButton();
@@ -45,14 +44,13 @@ public class MenuFuncionario extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Locadora Pão Duro");
 
-        jLabel_locadora.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
-        jLabel_locadora.setText("Locadora Pão Duro");
-
-        jLabel_menu.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        jLabel_menu.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
         jLabel_menu.setText("Menu do usuário");
 
         btnCadastrarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
+        btnCadastrarCarro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/car_add.png"))); // NOI18N
         btnCadastrarCarro.setText("Cadastrar Carro");
         btnCadastrarCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +59,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
         });
 
         btnEditarPerfil.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
+        btnEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/vcard_edit.png"))); // NOI18N
         btnEditarPerfil.setText("Editar Perfil");
         btnEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +68,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
         });
 
         btnEditarCarro.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
+        btnEditarCarro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/server_edit.png"))); // NOI18N
         btnEditarCarro.setText("Editar Carro");
         btnEditarCarro.setMaximumSize(new java.awt.Dimension(135, 23));
         btnEditarCarro.setMinimumSize(new java.awt.Dimension(135, 23));
@@ -79,6 +79,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
         });
 
         btnVerCarros.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
+        btnVerCarros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/car.png"))); // NOI18N
         btnVerCarros.setText("Ver Carros");
         btnVerCarros.setToolTipText("");
         btnVerCarros.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +89,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
         });
 
         btnVoltar.setFont(new java.awt.Font("JetBrains Mono", 0, 10)); // NOI18N
-        btnVoltar.setText("Voltar");
+        btnVoltar.setText("Sair");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -99,29 +100,23 @@ public class MenuFuncionario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerCarros, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_menu)
-                    .addComponent(jLabel_locadora))
-                .addGap(60, 60, 60))
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel_locadora, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel_menu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel_menu)
+                .addGap(26, 26, 26)
                 .addComponent(btnCadastrarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,9 +124,9 @@ public class MenuFuncionario extends javax.swing.JFrame {
                 .addComponent(btnEditarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVerCarros, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -234,7 +229,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarPerfil;
     private javax.swing.JButton btnVerCarros;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JLabel jLabel_locadora;
     private javax.swing.JLabel jLabel_menu;
     // End of variables declaration//GEN-END:variables
 }
