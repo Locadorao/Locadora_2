@@ -6,7 +6,9 @@
 package com.mycompany.model;
 
 import com.mycompany.dao.EntidadeBase;
+import com.mycompany.dao.GenericDAO;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;

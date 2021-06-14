@@ -1,5 +1,7 @@
 package com.mycompany.dao;
 
+import com.mycompany.model.Alugar;
+import com.mycompany.model.Carro;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,27 +17,13 @@ public class GenericDAO<T extends EntidadeBase> {
 
     public GenericDAO() {
         entityManager = ConnectionFactory.getEntityManager();
-
     }
 
     public Session getSession() {
         return entityManager.unwrap(Session.class);
     }
 
-//    public Voluntario findVoluntarioByCPF(String  id){;;;
-//        Voluntario voluntario1= null;
-//        
-//        try{
-//            Query query= entityManager.createNamedQuery("Find Usuario By nome");
-//            query.setParameter("parametro", id);
-//            voluntario1= (Voluntario) query.setMaxResults(1).getSingleResult();           
-//        } catch (Exception e) {
-//            voluntario1= null;
-//        }finally {
-//            
-//        }
-//        return voluntario1;
-//    }
+    
 //    
 //    public Usuario findUsuarioByCPF(String  id){
 //        Usuario usuario1= null;

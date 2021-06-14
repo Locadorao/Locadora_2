@@ -6,6 +6,7 @@
 package com.mycompany.model;
 
 import com.mycompany.dao.EntidadeBase;
+import com.mycompany.dao.GenericDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -162,6 +163,17 @@ public class Carro implements Serializable, EntidadeBase {
     @Override
     public String toString() {
         return "com.mycompany.model.Carro[ id=" + id + " ]";
+    }
+
+    public Alugar encontrarAlugarPeloCarro(GenericDAO alugarDAO) {
+        List<Alugar> alugs;
+        alugs = alugarDAO.list(Alugar.class);
+        for (Alugar alg : alugs) {
+            if (alg.getCarroid().getId().equals(this.getId())) {
+                return alg;
+            }
+        }
+        return null;
     }
 
 }

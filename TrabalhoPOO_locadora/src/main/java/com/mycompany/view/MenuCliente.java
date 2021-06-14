@@ -5,22 +5,38 @@
  */
 package com.mycompany.view;
 
+import com.mycompany.dao.GenericDAO;
+import com.mycompany.model.Alugar;
+import com.mycompany.model.Carro;
 import com.mycompany.model.Cliente;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 public class MenuCliente extends javax.swing.JFrame {
 
+    private final GenericDAO<Alugar> alugarDAO;
+    private final GenericDAO<Carro> carroDAO;
+    private final GenericDAO<Cliente> clienteDAO;
     private Cliente cli;
+    private Alugar alug;
 
     /**
      * Creates new form MenuCliente
      */
     public MenuCliente() {
         initComponents();
+        alugarDAO = new GenericDAO<>();
+        carroDAO = new GenericDAO<>();
+        clienteDAO = new GenericDAO<>();
+
     }
 
     public MenuCliente(Cliente log) {
         initComponents();
         cli = log;
+        alugarDAO = new GenericDAO<>();
+        carroDAO = new GenericDAO<>();
+        clienteDAO = new GenericDAO<>();
     }
 
     /**
@@ -144,7 +160,10 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntregarCarroActionPerformed
 
     private void btnVerCarroAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCarroAlugadoActionPerformed
-        
+        alug = new Alugar();
+        alug = cli.encontrarAlugarPeloCliente(alugarDAO);
+        JOptionPane.showMessageDialog(null, alug.getCarroid());
+
     }//GEN-LAST:event_btnVerCarroAlugadoActionPerformed
 
     private void btnAlugarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugarCarroActionPerformed
